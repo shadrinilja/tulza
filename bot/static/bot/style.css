@@ -1,0 +1,32 @@
+.page {
+    min-width: 1100px;
+    max-width: 1600px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    display: flex;
+
+    flex-flow: column;
+    align-items: center;
+}
+.info{
+    background:#F2F2F2;
+    border: red 1px ;
+}
+
+.input_inn{
+    width: 50%;
+    background:#F2F2F2;
+    border: red 1px ;
+    border-radius: 6px;
+
+}
+.input_date{
+    width: 100%;
+    min-height: 35px
+
+}
+.list_data{
+    list-style-type: none
+}
+.elem_list{
+    margin-bottom: 30px;
+}
