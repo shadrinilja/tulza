@@ -9,13 +9,20 @@
 <body>
 {% for tro in object_list %}
     <h1 class="info">Результаты поиска</h1>
-    <ul class="list_data">
-        {% for tro in object_list %}
-        <li>{{ tro.name }}<p>wgfew</p></li>
-        <li>{{ tro.inn }}</li>
-        <li><a>{{ tro.url_doc }}</a></li>
+    <div>
+    <p>{{ tro.name }}</p>
+    <p>{{ tro.inn }}</p>
+    <p>{{ tro.url_doc }}</p>
+    </div>
 {% endfor %}
-    </ul>
+<!--    <ul class="list_data">-->
+<!--{% for tro in object_list %}-->
+<!--        {% for tro in object_list %}-->
+<!--        <li>{{ tro.name }}<p>wgfew</p></li>-->
+<!--        <li>{{ tro.inn }}</li>-->
+<!--        <li><a>{{ tro.url_doc }}</a></li>-->
+<!--{% endfor %}-->
+<!--    </ul>-->
 </body>
 </html>
 
