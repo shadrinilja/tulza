@@ -35,47 +35,47 @@ class JsonParse:
         return tro
 
 def combine_names(apps, schema_editor):
-    for tro in Bb.objects.all():
-        lo = str(tro.id_ogr)
-        InquiryParse = prs_part_agency
-        InquiryParse['agency'] = lo
-        InquiryParse['task'] = ''
-        print(InquiryParse)
-        a = JsonParse(get_prs_inquiry).AssemblyInquiry()
-        print(a)
-        response = urlopen(a)
-        data_json = json.loads(response.read())
-        tasks_dict = data_json['tasks']
-        task = tasks_dict[-1:]
-        for last_year in task:
-            for key, values in last_year.items():
-                all_last_year = last_year.get('id')
-        print(all_last_year)
-        obj_task = Bb.objects.get(id=tro.pk)
-        obj_task.actual_year = all_last_year
-        obj_task.save()
-        Prs_tasks = prs_part_agency
-        Prs_tasks['task'] = all_last_year
-        b = JsonParse(get_prs_inquiry).AssemblyInquiry() ##Полная ссылка
-        print(b)
-        obj_url = Bb.objects.get(id=tro.pk)
-        obj_url.url_pars = b
-        obj_url.save()
-        response = urlopen(b)
-        data_json = json.loads(response.read())
-        pubDate = data_json['currentTask']['attachments'][0]['publishDate']
-        obj_pubD = Bb.objects.get(id=tro.pk)
-        obj_pubD.publishDate = pubDate
-        obj_pubD.save()
-        doc = data_json['currentTask']['attachments'][0]['id']
-        InquiryParse = prs_part_doc
-        InquiryParse['id'] = doc
-        print(InquiryParse)
-        c = JsonParse(get_get_prs_inquiry_doc).AssemblyInquiry_2()
-        print(c)
-        obj_url_doc = Bb.objects.get(id=tro.pk)
-        obj_url_doc.url_doc = c
-        obj_url_doc.save()
+    pass
+    # for tro in Bb.objects.all():
+    #     lo = str(tro.id_ogr)
+    #     InquiryParse = prs_part_agency
+    #     InquiryParse['agency'] = lo
+    #     InquiryParse['task'] = ''
+    #     print(InquiryParse)
+    #     a = JsonParse(get_prs_inquiry).AssemblyInquiry()
+    #     print(a)
+    #     response = urlopen(a)
+    #     data_json = json.loads(response.read())
+    #     tasks_dict = data_json['tasks']
+    #     task = tasks_dict[-1:]
+    #     for last_year in task:
+    #         for key, values in last_year.items():
+    #             all_last_year = last_year.get('id')
+    #     obj_task = Bb.objects.get(id=tro.pk)
+    #     obj_task.actual_year = all_last_year
+    #     obj_task.save()
+    #     Prs_tasks = prs_part_agency
+    #     Prs_tasks['task'] = all_last_year
+    #     b = JsonParse(get_prs_inquiry).AssemblyInquiry() ##Полная ссылка
+    #     print(b)
+    #     obj_url = Bb.objects.get(id=tro.pk)
+    #     obj_url.url_pars = b
+    #     obj_url.save()
+    #     response = urlopen(b)
+    #     data_json = json.loads(response.read())
+    #     pubDate = data_json['currentTask']['attachments'][0]['publishDate']
+    #     obj_pubD = Bb.objects.get(id=tro.pk)
+    #     obj_pubD.publishDate = pubDate
+    #     obj_pubD.save()
+    #     doc = data_json['currentTask']['attachments'][0]['id']
+    #     InquiryParse = prs_part_doc
+    #     InquiryParse['id'] = doc
+    #     print(InquiryParse)
+    #     c = JsonParse(get_get_prs_inquiry_doc).AssemblyInquiry_2()
+    #     print(c)
+    #     obj_url_doc = Bb.objects.get(id=tro.pk)
+    #     obj_url_doc.url_doc = c
+    #     obj_url_doc.save()
 
 class Migration(migrations.Migration):
 
