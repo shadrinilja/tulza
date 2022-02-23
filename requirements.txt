@@ -57,4 +57,4 @@ Werkzeug==2.0.2
 whitenoise==6.0.0
 XlsxWriter==3.0.2
 zipp==3.6.0
-psycopg2==2.6.6
+psycopg2==2.6.2
