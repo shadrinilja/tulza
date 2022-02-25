@@ -7,14 +7,15 @@
     <title>результаты</title>
 </head>
 <body>
+{% for tro in object_list %}
     <h1 class="info">Результаты поиска</h1>
-    <ul>
-        {% for tro in object_list %}
-        <li>
-      {{ tro.name }}, {{ tro.inn }}
-        </li>
-        {% endfor %}
-    </ul>
+    <div>
+        <p>trololo</p>
+        <p>{{ tro.name }}</p>
+        <p>{{ tro.inn }}</p>
+        <p>{{ tro.url_doc }}</p>
+    </div>
+{% endfor %}
 </body>
 </html>
 
