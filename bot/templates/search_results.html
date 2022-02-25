@@ -8,12 +8,14 @@
 </head>
 <body>
     <h1 class="info">Результаты поиска</h1>
-    {% for tro in object_list %}
-    <p>trololo</p>
-    <p>{{tro.name}}</p>
-    <p>{{tro.inn}}</p>
-    <p>{{tro.url_doc}}</p>
-    {% endfor %}
+    <div>
+        {% for tro in object_list %}
+        <p>trololo</p>
+        <p>{{ tro.name }}</p>
+        <p>{{ tro.inn }}</p>
+        <p>{{ tro.url_doc }}</p>
+        {% endfor %}
+    </div>
 </body>
 </html>
 
