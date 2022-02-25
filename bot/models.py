@@ -19,7 +19,7 @@ class Bb(models.Model):
 
     objects = models.Manager()
     def __str__(self):
-        return self.url_pars
+        return self.name
 class Inquiry:##Парсим запрос
     def __init__(self, start_url):
         self.start_url = start_url
