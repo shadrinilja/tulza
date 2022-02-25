@@ -15,7 +15,7 @@ class SearchResultsView(ListView):
     def get_queryset(self):  # новый
         query = self.request.GET.get('q')
         object_list = Bb.objects.filter(
-            Q(inn=query) | Q(url_doc=query)
+            Q(inn__icontains=query) | Q(url_doc__icontains=query)
         )
         return object_list
 
