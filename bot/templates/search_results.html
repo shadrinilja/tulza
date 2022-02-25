@@ -10,9 +10,10 @@
 {% for tro in object_list %}
     <h1 class="info">Результаты поиска</h1>
     <div>
-    <p>{{ tro.name }}</p>
-    <p>{{ tro.inn }}</p>
-    <p>{{ tro.url_doc }}</p>
+        {% for tro in object_list %}
+        <p>{{ tro.name }}</p>
+        <p>{{ tro.inn }}</p>
+        <p>{{ tro.url_doc }}</p>
     </div>
 {% endfor %}
 <!--    <ul class="list_data">-->
