@@ -8,6 +8,12 @@
 </head>
 <body>
     <h1 class="info">Результаты поиска</h1>
+    <ul>
+    {% for tro in object_list %}
+        <li>{{ tro.name }}</li>
+    {% endfor %}
+    </ul>
+
     <div>
         {% for bb in object_list %}
             <p>trololo</p>
