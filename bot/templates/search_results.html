@@ -8,12 +8,12 @@
 </head>
 <body>
     <h1 class="info">Результаты поиска</h1>
+    {% for bb in object_list %}
     <div>
         <p>trololo</p>
-        {% for bb in object_list%}
-            <p>{{ bb.name }}, {{ bb.inn }},{{ bb.url_doc }}</p>
-        {% endfor %}
+        <p>{{ bb.name }}, {{ bb.inn }},{{ bb.url_doc }}</p>
     </div>
+    {% endfor %}
 </body>
 </html>
 
