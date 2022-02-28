@@ -1,6 +1,4 @@
-from django.http import HttpResponse
 from .models import Bb
-from django.shortcuts import render
 from django.views.generic import ListView, TemplateView
 from django.db.models import Q
 
