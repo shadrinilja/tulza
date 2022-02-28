@@ -1,25 +1,9 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="{% static '/bot/style.css' %}">
-    <title>результаты</title>
-</head>
-<body>
-    <h1 class="info">Результаты поиска</h1>
-    <ul>
-    {% for b in object_list %}
-        <li>{{ b.name }}</li>
-    {% endfor %}
-    </ul>
+<h1>Search Results</h1>
 
-    <div>
-        {% for bb in tro %}
-            <p>trololo</p>
-            <p>{{ bb.name }}, {{ bb.inn }},{{ bb.url_doc }}</p>
-        {% endfor %}
-    </div>
-</body>
-</html>
-
+<ul>
+  {% for city in object_list %}
+    <li>
+      {{ city.inn }}
+    </li>
+  {% endfor %}
+</ul>
