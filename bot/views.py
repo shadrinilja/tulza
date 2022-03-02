@@ -29,10 +29,6 @@ def search_form(request):
 class HomePageView(TemplateView):
     template_name = 'home.html'
 
-# class SearchResultsView(ListView):
-#     model = Bb
-#     template_name = 'search_results.html'
-
 def get_queryset(request):  # новый
     if 'q' in request.GET and request.GET['q']:
         q = request.GET['q']
