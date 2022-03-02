@@ -10,9 +10,11 @@
 <body>
     <div class="page">
         <h1 class="info">Информация о госзадании и его исполнении</h1>
-        <form name="q" class="input_inn" action="{% url 'search_results' %}" method="get">
-            <input class='input_date' name="q" type="text" placeholder="Найти...">
+        <form class="input_inn" name ='q' action="{% url 'search_results' %}" method="get">
+            <input class='input_date' name ='q' type="text" placeholder="Найти...">
+            <input type="submit" value="ПОИСК">
         </form>
     </div>
+
 </body>
 </html>
