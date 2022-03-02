@@ -9,17 +9,17 @@
 </head>
 <body>
     <p>Поиск для: <strong>{{ query }}</strong></p>
-{% if books %}
-    <p>Нашли{{ books|length }} организацию{{ books|pluralize }}</p>
-    <ul>
-        {% for book in books %}
-        <li class="elem_list">{{ book.name }}</li>
-        <li class="elem_list">{{ book.inn }}</li>
-        <li class="elem_list">{{ book.url_doc }}</li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>Не подходящие критерии</p>
-{% endif %}
+    {% if books %}
+        <p>Нашли{{ books|length }} организацию{{ books|pluralize }}</p>
+        <ul>
+            {% for book in books %}
+            <li class="elem_list">{{ book.name }}</li>
+            <li class="elem_list">{{ book.inn }}</li>
+            <li class="elem_list">{{ book.url_doc }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Не подходящие критерии</p>
+    {% endif %}
 </body>
 </html>
