@@ -10,7 +10,7 @@
 <body>
     <p>Поиск для: <strong>{{ query }}</strong></p>
     {% if books %}
-        <p>Нашли{{ books|length }} организацию {{ books|pluralize }}</p>
+        <p>Нашли{{ books|length }} организацию{{ books|pluralize }}</p>
         <ul>
             {% for book in books %}
             <li class="elem_list">{{ book.name }}</li>
