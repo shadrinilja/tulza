@@ -7,10 +7,10 @@ import pickle
 
 with open('/Users/777/PycharmProjects/tulza/bot/list_actual_agency_sort', 'rb') as fp:
     _const_d = pickle.load(fp)
+
 from django.db import migrations, models
 from bot.models import Bb
 def combine_names(apps, schema_editor):
-    pass
     for dct in _const_d:
         for tro in dct:
             lo = int(dct[tro][0])
