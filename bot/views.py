@@ -7,24 +7,6 @@ import requests
 def search_form(request):
     return render('home.html')
 
-# def search(request):
-#     if 'q' in request.GET:
-#         message = 'You searched for: %r' % request.GET['q']
-#     else:
-#         message = 'You submitted an empty form.'
-#     return HttpResponse(message)
-
-# def search(request):
-#     if request.method == 'GET':
-#         book_name = request.GET.get('q')
-#         try:
-#             status = Bb.objects.filter(inn=book_name)
-#             return render(request, "search_results.html", {"tro": status})
-#         except:
-#             return render(request, "search_results.html", {'tro': status})
-#     else:
-#         return render(request, "search_results.html", {})
-
 
 class HomePageView(TemplateView):
     template_name = 'home.html'
