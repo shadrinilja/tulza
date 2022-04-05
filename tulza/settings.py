@@ -108,10 +108,10 @@ LOGGING = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'prs',
-        'USER': 'postgres',
-        'PASSWORD': 'Anny_1995',
-        'HOST': 'localhost',
+        'NAME': 'd6ttne260hgp77',
+        'USER': 'ylfzqrafxuxwfx',
+        'PASSWORD': '00b3e9d43f0fa82bf011335c625af5ceeb461212900a821a60be60e29ebd6ec3',
+        'HOST': 'ec2-52-3-200-138.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
