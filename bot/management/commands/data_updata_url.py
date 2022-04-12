@@ -11,7 +11,7 @@ import json
 from urllib.request import urlopen
 import time
 from urllib.error import URLError
-
+from bot.models import JsonParse
 start_time = time.time()
 
 take_default_json = Inquiry('https://bus.gov.ru/public/agency/agency_tasks.json?agency=182691&task=')
@@ -24,17 +24,7 @@ prs_download_doc = Inquiry(__const_url)
 get_get_prs_inquiry_doc = prs_download_doc.get_start_url()
 prs_part_doc = prs_download_doc.InquiryPrs()
 
-class JsonParse:
-    def __init__(self,inquiry):
-        self.inquiry = inquiry
-    def AssemblyInquiry(self):##Собираем запрос
-        tro = urlsplit(self.inquiry).scheme+'://'+ urlsplit(self.inquiry).netloc \
-              + urlsplit(self.inquiry).path +'?'+urlencode(prs_default_dict)
-        return tro
-    def AssemblyInquiry_2(self):##Собираем запрос
-        tro = urlsplit(self.inquiry).scheme+'://'+ urlsplit(self.inquiry).netloc \
-              + urlsplit(self.inquiry).path +'?'+urlencode(prs_part_doc)
-        return tro
+
 class Command(BaseCommand):
     def handle(self, *args, **options):
         for tro in Bb.objects.all():
@@ -46,7 +36,7 @@ class Command(BaseCommand):
                 old_url = itreete_old_pk.url_pars
                 prs_default_dict['agency'] = lo
                 prs_default_dict['task'] = ''
-                a = JsonParse(take_default_address).AssemblyInquiry()
+                a = JsonParse(take_default_address, prs_default_dict).AssemblyInquiry()
                 response = urlopen(a)
                 data_json = json.loads(response.read())
                 tasks_dict = data_json['tasks']
@@ -56,7 +46,7 @@ class Command(BaseCommand):
                         all_last_year = last_year.get('id')
                 Prs_tasks = prs_default_dict
                 Prs_tasks['task'] = all_last_year
-                b = JsonParse(take_default_address).AssemblyInquiry()
+                b = JsonParse(take_default_address, prs_default_dict).AssemblyInquiry()
                 print(b)
                 response = urlopen(b)
                 data_json = json.loads(response.read())
@@ -66,14 +56,18 @@ class Command(BaseCommand):
                 new_tittle_name = name_title.split()
                 del new_tittle_name[0:4]
                 string_titile_name = ' '.join(new_tittle_name)
-                doc = data_json['currentTask']['attachments'][0]['id']  ##Докумаент
-                print(doc)
+                doc = data_json['currentTask']['attachments']  ##Докумаент
+                doc_dict = doc[-1:]
+                for year_d in doc_dict:
+                    for lolo, pepe in year_d.items():
+                        all_last_document = year_d.get('id')
+                print(all_last_document) ##Докумаент
                 old_url_doc = itreete_old_pk.url_doc
                 inn = tro.inn
                 print(inn)
                 InquiryParse = prs_part_doc
-                InquiryParse['id'] = doc
-                c = JsonParse(get_get_prs_inquiry_doc).AssemblyInquiry_2()
+                InquiryParse['id'] = all_last_document
+                c = JsonParse(get_get_prs_inquiry_doc, prs_part_doc).AssemblyInquiry()
                 print(c)
                 obj_url_doc = Bb.objects.get(id=tro.pk)
                 obj_url_doc.url_doc = c

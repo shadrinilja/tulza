@@ -10,6 +10,7 @@ from urllib.parse import urlsplit, urlencode
 import json
 from urllib.request import urlopen
 import time
+from bot.models import JsonParse
 start_time = time.time()
 
 __const_url = 'https://bus.gov.ru/public/download/download.html?id='
@@ -22,18 +23,6 @@ get_get_prs_inquiry_doc = prs_download_doc.get_start_url()
 prs_part_doc = prs_download_doc.InquiryPrs()
 
 
-class JsonParse:
-    def __init__(self, inquiry):
-        self.inquiry = inquiry
-    def AssemblyInquiry(self):##Собираем запрос
-        tro = urlsplit(self.inquiry).scheme+'://'+ urlsplit(self.inquiry).netloc \
-              + urlsplit(self.inquiry).path +'?'+urlencode(prs_part_agency)
-        return tro
-    def AssemblyInquiry_2(self):##Собираем запрос
-        tro = urlsplit(self.inquiry).scheme+'://'+ urlsplit(self.inquiry).netloc \
-              + urlsplit(self.inquiry).path +'?'+urlencode(prs_part_doc)
-        return tro
-
 def combine_names(apps, schema_editor):
     for tro in Bb.objects.all():
         lo = str(tro.id_ogr)
@@ -41,7 +30,7 @@ def combine_names(apps, schema_editor):
         InquiryParse['agency'] = lo
         InquiryParse['task'] = ''
         print(InquiryParse)
-        a = JsonParse(get_prs_inquiry).AssemblyInquiry()
+        a = JsonParse(get_prs_inquiry,prs_part_agency).AssemblyInquiry()
         print(a)
         response = urlopen(a)
         data_json = json.loads(response.read())
@@ -55,8 +44,8 @@ def combine_names(apps, schema_editor):
         obj_task.save()
         Prs_tasks = prs_part_agency
         Prs_tasks['task'] = all_last_year
-        b = JsonParse(get_prs_inquiry).AssemblyInquiry() ##Полная ссылка
-        print(b)
+        b = JsonParse(get_prs_inquiry,prs_part_agency).AssemblyInquiry()##Полная ссылка
+
         obj_url = Bb.objects.get(id=tro.pk)
         obj_url.url_pars = b
         obj_url.save()
@@ -70,7 +59,7 @@ def combine_names(apps, schema_editor):
         InquiryParse = prs_part_doc
         InquiryParse['id'] = doc
         print(InquiryParse)
-        c = JsonParse(get_get_prs_inquiry_doc).AssemblyInquiry_2()
+        c = JsonParse(get_get_prs_inquiry_doc,prs_part_doc).AssemblyInquiry()
         print(c)
         obj_url_doc = Bb.objects.get(id=tro.pk)
         obj_url_doc.url_doc = c

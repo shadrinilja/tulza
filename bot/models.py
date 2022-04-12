@@ -32,6 +32,18 @@ class Inquiry:##Парсим запрос
                 params[key] = val[0]
         return params
 
+class JsonParse:
+    def __init__(self, inquiry,input_urlencode):
+        self.inquiry = inquiry
+        self.input_urlencode = input_urlencode
+    def get_urlencode_input(self):
+        return urlencode(self.input_urlencode)
+
+    def AssemblyInquiry(self):##Собираем запрос
+        tro = urlsplit(self.inquiry).scheme+'://'+ urlsplit(self.inquiry).netloc \
+              + urlsplit(self.inquiry).path + '?'+ self.get_urlencode_input()
+        return tro
+
 take_default_json = Inquiry('https://bus.gov.ru/public/agency/agency_tasks.json?agency=182691&task=')
 take_default_address = take_default_json.get_start_url()
 prs_default_dict = take_default_json.InquiryPrs()

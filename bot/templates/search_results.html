@@ -15,7 +15,7 @@
             {% for book in books %}
             <li class="elem_list">{{ book.name }}</li>
             <li class="elem_list">{{ book.inn }}</li>
-            <li class="elem_list">{{ book.url_doc }}</li>
+            <li class="elem_list"><a href="{{ book.url_doc }}">{{ book.url_doc }}</a></li>
             {% endfor %}
         </ul>
     {% else %}
